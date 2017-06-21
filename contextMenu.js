@@ -204,22 +204,23 @@ angular.module('ui.bootstrap.contextMenu', [])
                 }
             });
 
-            $li.on('mouseover', function ($event) {
-                $scope.$apply(function () {
-                    if (nestedMenu) {
-                        openNestedMenu($event);
-                    /// Implementation made by dashawk
-                    } else {
-                        removeContextMenus(level + 1);
-                    }
-                });
-            });
         } else {
             $li.on('click', function ($event) {
                 $event.preventDefault();
             });
             $li.addClass('disabled');
         }
+
+		$li.on('mouseover', function ($event) {
+			$scope.$apply(function () {
+				if (nestedMenu) {
+					openNestedMenu($event);
+				/// Implementation made by dashawk
+				} else {
+					removeContextMenus(level + 1);
+				}
+			});
+		});
 
     };
 
